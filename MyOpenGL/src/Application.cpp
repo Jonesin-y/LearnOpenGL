@@ -250,7 +250,8 @@ glm::vec3 cubePositions[] =
 		{
 			if (i != 1)
 			{
-				rotation = glm::rotate(glm::mat4(1.0f), glm::radians(rad), glm::vec3(0.5f, 0.5f, 0.0f));
+				float angle = 20.0 * i;
+				rotation = glm::rotate(glm::mat4(1.0f), glm::radians(angle), glm::vec3(0.5f, 0.5f, 0.0f));
 
 				glm::mat4 translation0 = glm::translate(glm::mat4(1.0f), glm::vec3(cubePositions[i].x, cubePositions[i].y, cubePositions[i].z));
 				Model = translation0 * rotation;

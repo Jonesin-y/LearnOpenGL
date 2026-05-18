@@ -51,11 +51,11 @@ uniform lightSource u_light;
 		vec3 lightDir;
 	if (u_light.position.w == 1.0f)
 		lightDir = normalize(vec3(u_light.position) - f_fragPos);
-	if (u_light.position.w == 0.0f)
-		lightDir = normalize(vec3(u_light.position));
+	else if (u_light.position.w == 0.0f)
+		lightDir = normalize(vec3(-u_light.position));
 //diffuse sets
 	
-		vec3 viewDir = normalize(u_viewPos - f_fragPos);
+		vec3 viewDir = normalize(vec3(u_viewPos) - f_fragPos);
 		vec3 reflectDir = reflect(-lightDir, norm);
 		
 //specular sets

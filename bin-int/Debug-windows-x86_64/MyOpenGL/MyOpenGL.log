@@ -1,0 +1,22 @@
+﻿D:\Visual Studio 2026\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(536,5): warning MSB8004: Intermediate 目录未以斜杠结尾。  此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Intermediate 目录。
+D:\Visual Studio 2026\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(537,5): warning MSB8004: Output 目录未以斜杠结尾。  此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。
+  Application.cpp
+D:\HowToRender\MyOpenGL\MyOpenGL\src\Application.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\HowToRender\MyOpenGL\MyOpenGL\src\Engine_obj\Camera.h(4,7): warning C4099: “GLFWwindow”: 类型名称以前使用“struct”现在使用的是“class”
+  (编译源文件“/src/Application.cpp”)
+      D:\HowToRender\MyOpenGL\MyOpenGL\Dependencies\glfw-3.4.bin.WIN64\include\GLFW\glfw3.h(1403,16):
+      参见“GLFWwindow”的声明
+  
+D:\HowToRender\MyOpenGL\MyOpenGL\src\Application.cpp(54,12): warning C4305: “参数”: 从“double”到“float”截断
+  (编译源文件“/src/Application.cpp”)
+  
+D:\HowToRender\MyOpenGL\MyOpenGL\src\Application.cpp(214,22): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“/src/Application.cpp”)
+  
+D:\HowToRender\MyOpenGL\MyOpenGL\src\Application.cpp(216,6): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“/src/Application.cpp”)
+  
+D:\HowToRender\MyOpenGL\MyOpenGL\src\Application.cpp(253,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“/src/Application.cpp”)
+  
+  MyOpenGL.vcxproj -> D:\HowToRender\MyOpenGL\bin\Debug-windows-x86_64\MyOpenGL\MyOpenGL.exe
