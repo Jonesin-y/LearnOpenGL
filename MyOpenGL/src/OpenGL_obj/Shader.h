@@ -12,17 +12,16 @@ public:
 class Shader
 {
 public:
-	Shader(const std::string& filePath);
+	Shader(const std::string& vs_filePath,const std::string& fs_filePath);
 	~Shader();
 
-	shader_src LoadShaderFromFile(const std::string& filePath);
+	std::string LoadShaderFromFile(const std::string& filePath);
 	GLuint CompileShader(GLenum type, const std::string& src);
 	GLuint CreateShader(const std::string& vs_src, const std::string& fs_src);
 	inline GLuint GetShaderID() { return m_ShaderID; };
 	void ShaderLog();
 	void Bind();
 	void UnBind();
-
 	//Functions for setting uniforms
 	void SetUniform1i(const std::string& name, int value);
 	void SetUniform1f(const std::string& name, float value);
@@ -32,7 +31,8 @@ public:
 	void SetUniformMat4f(const std::string& name, unsigned int count,unsigned char normalized,const float* value);
 	
 private:
-	std::string m_filePath;
+	std::string m_fs_filePath;
+	std::string m_vs_filePath;
 	shader_src m_src;
 	GLuint m_ShaderID;
 };

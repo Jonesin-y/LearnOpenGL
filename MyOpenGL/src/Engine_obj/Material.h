@@ -5,18 +5,16 @@
 class Shader;
 struct Material
 {
-	Material(float Shininess, glm::vec3 Ambient, glm::vec3 Diffuse, glm::vec3 Specular);
-	Material(float MapShininess, GLint DiffuseMap2D, GLint SpecularMapID);
-	Material(float MapShininess, GLint DiffuseMap2D, GLint SpecularMapID,GLint EmissionMapID);
-	float shininess;
-	glm::vec3 colorAmbient;
-	glm::vec3 colorDiffuse;
-	glm::vec3 colorSpecular;
-	
-	GLint diffuseMapID;
-	GLint specularMapID;
 
-	GLint emissionMapID;
+	float shininess;
+	glm::vec3 colorAmbient = glm::vec3(1.0f,1.0f,1.0f);
+	glm::vec3 colorDiffuse = glm::vec3(1.0f,1.0f,1.0f);
+	glm::vec3 colorSpecular= glm::vec3(1.0f,1.0f,1.0f);
+	
+	GLint diffuseMapID = 1;
+	GLint specularMapID = 2;
+
+	GLint emissionMapID = 3;
 	void ApplyToShader(Shader& shader,const std::string& material_name);
 };
 

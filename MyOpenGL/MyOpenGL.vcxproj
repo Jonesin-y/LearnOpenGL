@@ -171,16 +171,6 @@
     <ClCompile Include="src\OpenGL_obj\VertexArray.cpp" />
     <ClCompile Include="src\OpenGL_obj\VertexBuffer.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\shaders\Basic.shader">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <FileType>Document</FileType>
-    </Text>
-    <Text Include="res\shaders\light.shader">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <FileType>Document</FileType>
-    </Text>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

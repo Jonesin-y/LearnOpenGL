@@ -105,8 +105,4 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\shaders\Basic.shader" />
-    <Text Include="res\shaders\light.shader" />
-  </ItemGroup>
 </Project>

@@ -1,10 +1,11 @@
 #include "pch.h"
 #include "Shader.h"
 
-Shader::Shader(const std::string& filePath)
-	: m_filePath(filePath)
+Shader::Shader(const std::string& vs_filePath,const std::string& fs_filePath)
+	: m_vs_filePath(vs_filePath),m_fs_filePath(fs_filePath)
 {
-	m_src = LoadShaderFromFile(m_filePath);
+	m_src.vs = LoadShaderFromFile(m_vs_filePath);
+	m_src.fs = LoadShaderFromFile(m_fs_filePath);
 	m_ShaderID = CreateShader(m_src.vs, m_src.fs);
 	Bind();
 }
@@ -14,40 +15,21 @@ Shader::~Shader()
 	glDeleteProgram(m_ShaderID);
 }
 
-shader_src Shader::LoadShaderFromFile(const std::string& filePath)
+std::string Shader::LoadShaderFromFile(const std::string& filePath)
 {
-	enum shader_type
-	{
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-	shader_type type = NONE;
-	std::stringstream ss[2];
 	std::ifstream stream(filePath);
-	std::string line;
 	if (!stream.is_open())
 	{
-		printf("Failed to open file: %s\n", filePath.c_str());
-		return { "","" };
+		std::cout << "读取失败!" << std::endl;
+		return "";
 	}
+	std::stringstream sstream;
+	std::string line;
 	while (getline(stream, line))
 	{
-		if (line.find("#vertex") != std::string::npos)
-		{
-			type = VERTEX;
-			continue;
-		}
-		else if (line.find("#fragment") != std::string::npos)
-		{
-			type = FRAGMENT;
-			continue;
-		}
-		if (type != NONE)
-		{
-			ss[type] << line << "\n";
-		}
+		sstream << line << '\n';
 	}
-	return { ss[0].str(),ss[1].str() };
-
+	return sstream.str();
 }
 
 GLuint Shader::CompileShader(GLenum type, const std::string& src)
@@ -56,6 +38,7 @@ GLuint Shader::CompileShader(GLenum type, const std::string& src)
 	const char* src_c = src.c_str();
 	glShaderSource(id, 1, &src_c, NULL);
 	glCompileShader(id);
+	//Shader compile error log
 	GLint result;
 	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
 	if (result == GL_FALSE)
@@ -80,6 +63,18 @@ GLuint Shader::CreateShader(const std::string& vs_src, const std::string& fs_src
 	glAttachShader(id, vs);
 	glAttachShader(id, fs);
 	glLinkProgram(id);
+	//shader link error log
+	GLint result;
+	glGetProgramiv(id, GL_LINK_STATUS, &result);
+	if (result == GL_FALSE)
+	{
+		GLint length;
+		glGetProgramiv(id, GL_INFO_LOG_LENGTH, &length);
+		char* message= (char*)alloca(length);
+		glGetProgramInfoLog(id, length, &length, message);
+		std::cout << "LINK ERROR! DETAIL: " << message << std::endl;
+	}
+
 	glValidateProgram(id);
 	glDeleteShader(vs);
 	glDeleteShader(fs);
@@ -102,35 +97,35 @@ void Shader::UnBind()
 void Shader::SetUniform1i(const std::string& name, int value)
 {
 	GLint location = glGetUniformLocation(m_ShaderID, name.c_str());
-	glUniform1i(location, value);
+	glProgramUniform1i(m_ShaderID,location, value);
 }
 
 void Shader::SetUniform1f(const std::string& name, float value)
 {
 	GLint location = glGetUniformLocation(m_ShaderID, name.c_str());
-	glUniform1f(location, value);
+	glProgramUniform1f(m_ShaderID,location, value);
 }
 
 void Shader::SetUniform3f(const std::string& name, float v0, float v1, float v2)
 {
 	GLint location = glGetUniformLocation(m_ShaderID, name.c_str());
-	glUniform3f(location, v0, v1, v2);
+	glProgramUniform3f(m_ShaderID,location, v0, v1, v2);
 }
 
 void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
 {
 	GLint location = glGetUniformLocation(m_ShaderID, name.c_str());
-	glUniform4f(location, v0, v1, v2, v3);
+	glProgramUniform4f(m_ShaderID,location, v0, v1, v2, v3);
 }
 
 void Shader::SetUniformMat3f(const std::string& name, unsigned int count, unsigned char normalized, const float* value)
 {
 	GLint location = glGetUniformLocation(m_ShaderID, name.c_str());
-	glUniformMatrix3fv(location, count, normalized, value);
+	glProgramUniformMatrix3fv(m_ShaderID,location, count, normalized, value);
 }
 
 void Shader::SetUniformMat4f(const std::string& name, unsigned int count, unsigned char normalized, const float* value)
 {
 	GLint location = glGetUniformLocation(m_ShaderID, name.c_str());
-	glUniformMatrix4fv(location, count, normalized, value);
+	glProgramUniformMatrix4fv(m_ShaderID,location, count, normalized, value);
 }

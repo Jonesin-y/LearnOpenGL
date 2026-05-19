@@ -1,28 +1,28 @@
 #include "pch.h"
 #include "Camera.h"
 
-glm::mat4 MyLookAt(glm::vec3 Pos, glm::vec3 target, glm::vec3 Up)
-{
-	glm::vec3 z = glm::normalize(Pos - target);
-	glm::vec3 x = glm::normalize(glm::cross(Up,z));
-	glm::vec3 y = glm::normalize(glm::cross(z, x));
-	glm::mat4 Rotation = glm::mat4(1.0f);
-	Rotation[0][0] = x.x;
-	Rotation[1][0] = x.y;
-	Rotation[2][0] = x.z;
-	Rotation[0][1] = y.x;
-	Rotation[1][1] = y.y;
-	Rotation[2][1] = y.z;
-	Rotation[0][2] = z.x;
-	Rotation[1][2] = z.y;
-	Rotation[2][2] = z.z;
-	glm::mat4 translation = glm::translate(glm::mat4(1.0f), -Pos);
-	glm::mat4 Result =  Rotation * translation;
-
-
-
-	return Result;
-}
+//glm::mat4 MyLookAt(glm::vec3 Pos, glm::vec3 target, glm::vec3 Up)
+//{
+//	glm::vec3 z = glm::normalize(Pos - target);
+//	glm::vec3 x = glm::normalize(glm::cross(Up,z));
+//	glm::vec3 y = glm::normalize(glm::cross(z, x));
+//	glm::mat4 Rotation = glm::mat4(1.0f);
+//	Rotation[0][0] = x.x;
+//	Rotation[1][0] = x.y;
+//	Rotation[2][0] = x.z;
+//	Rotation[0][1] = y.x;
+//	Rotation[1][1] = y.y;
+//	Rotation[2][1] = y.z;
+//	Rotation[0][2] = z.x;
+//	Rotation[1][2] = z.y;
+//	Rotation[2][2] = z.z;
+//	glm::mat4 translation = glm::translate(glm::mat4(1.0f), -Pos);
+//	glm::mat4 Result =  Rotation * translation;
+//
+//
+//
+//	return Result;
+//}
 Camera::Camera(glm::vec3 position, glm::vec3 up, float pitch , float yaw):
 	Position(position),
 	Up(up),
@@ -86,7 +86,7 @@ void Camera::ProcessMouseScroll(double xOffset, double yOffset)
 
 glm::mat4 Camera::GetViewMatrix()
 {
-	return MyLookAt(Position, Position + Front, Up);
+	return glm::lookAt(Position, Position + Front, Up);
 }
 
 
