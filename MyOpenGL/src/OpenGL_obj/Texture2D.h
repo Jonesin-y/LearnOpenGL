@@ -11,6 +11,8 @@ public:
 	void Bind(unsigned int slot)const;
 	void UnBind()const;
 
+	static std::shared_ptr<Texture2D>Create(const std::string& filePath) { return std::make_shared<Texture2D>(filePath); }
+
 
 
 private:

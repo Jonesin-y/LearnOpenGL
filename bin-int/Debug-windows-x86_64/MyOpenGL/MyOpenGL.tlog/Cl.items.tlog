@@ -1,9 +1,8 @@
+D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\Buffer.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\Buffer.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\Engine_obj\lightSource.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\lightSource.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\Engine_obj\Material.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\Material.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\Engine_obj\Camera.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\Camera.obj
-D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\BufferLayout.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\BufferLayout.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\Shader.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\Shader.obj
-D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\IndexBuffer.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\IndexBuffer.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\Application.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\Application.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\Core.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\Core.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\Glad\glad.c;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\glad.obj
@@ -12,4 +11,3 @@ D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\Renderer.cpp;D:\HowToRender\MyOp
 D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\Texture2D.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\Texture2D.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\vendor\stb_image\stb_image.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\stb_image.obj
 D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\VertexArray.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\VertexArray.obj
-D:\HowToRender\MyOpenGL\MyOpenGL\src\OpenGL_obj\VertexBuffer.cpp;D:\HowToRender\MyOpenGL\bin-int\Debug-windows-x86_64\MyOpenGL\VertexBuffer.obj

@@ -1,11 +1,9 @@
 #include"pch.h"
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
-#include "Shader.h"
-#include"BufferLayout.h"
+#include "shader.h"
+#include"Buffer.h"
 #include"VertexArray.h"
-#include"VertexBuffer.h"
-#include"IndexBuffer.h"
 #include"Texture2D.h"
 #include"Camera.h"
 #include"Material.h"
@@ -226,37 +224,37 @@ glm::vec3 cubePositions[] =
 
 
 	//preprocess OpenGL_obj
-	Texture2D defaultTexture = Texture2D("res/Texture2D/defaultTexture.png");
-	Texture2D container2 = Texture2D("res/Texture2D/container2.png");
-	Texture2D SpecularMap = Texture2D("res/Texture2D/SpecularMap.png");
-	Texture2D emission = Texture2D("res/Texture2D/emission.jpg");
-	defaultTexture.Bind(0);
-	container2.Bind(1);
-	SpecularMap.Bind(2);
-	emission.Bind(3);
-	Shader Basic_shader = Shader("res/shaders/cube.vert","res/shaders/cube.frag");
-	Shader Light_shader = Shader("res/shaders/light.vert","res/shaders/light.frag");
-	GLuint Basic_shader_id = Basic_shader.GetShaderID();
-	GLuint Light_shader_id = Light_shader.GetShaderID();
+	std::shared_ptr<Texture2D> defaultTexture = Texture2D::Create("res/Texture2D/defaultTexture.png");
+	std::shared_ptr<Texture2D>  container2 = Texture2D::Create("res/Texture2D/container2.png");
+	std::shared_ptr<Texture2D>  SpecularMap = Texture2D::Create("res/Texture2D/SpecularMap.png");
+	std::shared_ptr<Texture2D>  emission = Texture2D::Create("res/Texture2D/emission.jpg");
+	defaultTexture->Bind(0);
+	container2->Bind(1);
+	SpecularMap->Bind(2);
+	emission->Bind(3);
+	std::shared_ptr<Shader>Basic_shader = Shader::Create("res/shaders/cube.vert","res/shaders/cube.frag");
+	std::shared_ptr<Shader>Light_shader = Shader::Create("res/shaders/light.vert","res/shaders/light.frag");
+	GLuint Basic_shader_id = Basic_shader->GetShaderID();
+	GLuint Light_shader_id = Light_shader->GetShaderID();
 	VertexArray VAO = VertexArray();
-	VertexBuffer vb = VertexBuffer(vertices,sizeof(vertices));
-	IndexBuffer ib = IndexBuffer(indices,sizeof(indices));
-
-	BufferLayout layout =BufferLayout();
-	layout.Push<float>(3, GL_FALSE);
-	layout.Push<float>(3, GL_FALSE);
-	layout.Push<float>(2, GL_FALSE);
-
-	VAO.AddBufferLayout(vb, layout);
+	auto vb = VertexBuffer::Create(vertices, sizeof(vertices));
+	auto ib = IndexBuffer::Create(indices, sizeof(indices));
+	BufferLayout layout = {
+		{ShaderType::Float3,"a_Position"},
+		{ShaderType::Float3,"a_Normal"},
+		{ShaderType::Float2,"a_TexCoord"}
+	};
+	vb->SetBufferLayout(layout);
+	VAO.AddVertexBuffer(vb);
 	//default shader
-	Basic_shader.Bind();
+	Basic_shader->Bind();
 	glm::mat4 Model = glm::mat4(1.0f);
 	glm::mat4 View = glm::mat4(1.0f);
 
 
 	glm::mat4 Projection = glm::mat4(1.0);
 	glm::mat4 MVP = Projection * View * Model;
-	Basic_shader.SetUniformMat4f("u_MVP", 1, GL_FALSE, &MVP[0][0]);
+	Basic_shader->SetUniformMat4f("u_MVP", 1, GL_FALSE, &MVP[0][0]);
 	float rotateRad = 0.0f;
 	float rad = 0.0f;
 	u_PointLight[0].ApplyToShader(Basic_shader, "u_PointLight[0]");
@@ -294,7 +292,6 @@ glm::vec3 cubePositions[] =
 		}
 		if (glfwGetKey(window, GLFW_KEY_F) == GLFW_RELEASE && f_Pressed) f_Pressed = false;
 		if (glfwGetKey(window,GLFW_KEY_ESCAPE) == GLFW_PRESS)	glfwSetWindowShouldClose(window, true);
-		std::cout << u_FlashLight.enableLight << std::endl;
 		rotateRad = rotateRad + rotateSpeed * deltaTime;
 
 		lastFrame = currentFrame;
@@ -312,9 +309,9 @@ glm::vec3 cubePositions[] =
 		
 		u_FlashLight.ApplyToShader(Basic_shader, "u_FlashLight");
 
-		Basic_shader.Bind();
+		Basic_shader->Bind();
 		
-		Basic_shader.SetUniform3f("u_viewPos", myCamera.Position.x, myCamera.Position.y, myCamera.Position.z);
+		Basic_shader->SetUniform3f("u_viewPos", myCamera.Position.x, myCamera.Position.y, myCamera.Position.z);
 		for (int i = 4;i < 10;i++)
 		{
 				float angle = 20.0 * i;
@@ -322,19 +319,19 @@ glm::vec3 cubePositions[] =
 
 				glm::mat4 translation0 = glm::translate(glm::mat4(1.0f), glm::vec3(cubePositions[i].x, cubePositions[i].y, cubePositions[i].z));
 				Model = translation0 * rotation;
-				Basic_shader.SetUniformMat4f("u_Model", 1, GL_FALSE, &Model[0][0]);
+				Basic_shader->SetUniformMat4f("u_Model", 1, GL_FALSE, &Model[0][0]);
 				glm::mat3 normalMat = glm::mat3(glm::transpose(glm::inverse(Model)));
-				Basic_shader.SetUniformMat3f("u_normalMat", 1, GL_FALSE, &normalMat[0][0]);
+				Basic_shader->SetUniformMat3f("u_normalMat", 1, GL_FALSE, &normalMat[0][0]);
 
 				MVP = Projection * View * Model;
 
-				Basic_shader.SetUniformMat4f("u_MVP", 1, GL_FALSE, &MVP[0][0]);
-				//Basic_shader.ShaderLog();
+				Basic_shader->SetUniformMat4f("u_MVP", 1, GL_FALSE, &MVP[0][0]);
+				//Basic_shader->ShaderLog();
 
 
 				glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, nullptr);
 		}
-		Light_shader.Bind();
+		Light_shader->Bind();
 		for (int i = 0;i < 4;i++)
 		{
 			u_PointLight[i].ApplyToShader(Light_shader, "u_light");
@@ -343,8 +340,8 @@ glm::vec3 cubePositions[] =
 			glm::mat4 translation1 = glm::translate(glm::mat4(1.0f), glm::vec3(position1.x, position1.y, position1.z));
 			Model = translation1;
 			MVP = Projection * View * Model;
-			Light_shader.SetUniformMat4f("u_MVP", 1, GL_FALSE, &MVP[0][0]);
-			//Light_shader.ShaderLog();
+			Light_shader->SetUniformMat4f("u_MVP", 1, GL_FALSE, &MVP[0][0]);
+			//Light_shader->ShaderLog();
 
 			glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, nullptr);
 		}

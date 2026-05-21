@@ -5,3 +5,13 @@
 	ASSERT(GLLogCall(#x, __FILE__, __LINE__))
 bool GLClearError();
 bool GLLogCall(const char* func, const char* file, int line);
+class Camera;
+class Renderer
+{
+public:
+	void BeginScene(Camera& camera);
+	void Submit();
+	void EndScene();
+};
+
+

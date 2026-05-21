@@ -136,27 +136,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\OpenGL_obj\Buffer.h" />
     <ClInclude Include="src\Engine_obj\lightSource.h" />
     <ClInclude Include="src\Engine_obj\Material.h" />
     <ClInclude Include="src\Engine_obj\Camera.h" />
-    <ClInclude Include="src\OpenGL_obj\BufferLayout.h" />
     <ClInclude Include="src\OpenGL_obj\Shader.h" />
-    <ClInclude Include="src\OpenGL_obj\IndexBuffer.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\OpenGL_obj\Renderer.h" />
     <ClInclude Include="src\pch\pch.h" />
     <ClInclude Include="src\OpenGL_obj\Texture2D.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
     <ClInclude Include="src\OpenGL_obj\VertexArray.h" />
-    <ClInclude Include="src\OpenGL_obj\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\OpenGL_obj\Buffer.cpp" />
     <ClCompile Include="src\Engine_obj\lightSource.cpp" />
     <ClCompile Include="src\Engine_obj\Material.cpp" />
     <ClCompile Include="src\Engine_obj\Camera.cpp" />
-    <ClCompile Include="src\OpenGL_obj\BufferLayout.cpp" />
     <ClCompile Include="src\OpenGL_obj\Shader.cpp" />
-    <ClCompile Include="src\OpenGL_obj\IndexBuffer.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Core.cpp" />
     <ClCompile Include="src\Glad\glad.c">
@@ -169,7 +166,6 @@
     <ClCompile Include="src\OpenGL_obj\Texture2D.cpp" />
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="src\OpenGL_obj\VertexArray.cpp" />
-    <ClCompile Include="src\OpenGL_obj\VertexBuffer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

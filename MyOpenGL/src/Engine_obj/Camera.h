@@ -35,6 +35,7 @@ public:
 	void ProcessKeyboard(Camera_Movement direction, float deltaTime);
 	void ProcessMouseMovement(double xOffset, double yOffset);
 	void ProcessMouseScroll(double xOffset, double yOffset);
+
 	glm::mat4 GetViewMatrix();
 private:
 	//default camera values

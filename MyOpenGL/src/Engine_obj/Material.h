@@ -15,6 +15,6 @@ struct Material
 	GLint specularMapID = 2;
 
 	GLint emissionMapID = 3;
-	void ApplyToShader(Shader& shader,const std::string& material_name);
+	void ApplyToShader(std::shared_ptr<Shader>& shader,const std::string& material_name);
 };
 

@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "VertexArray.h"
-#include"VertexBuffer.h"
-#include"BufferLayout.h"
+#include"Buffer.h"
 #include<glad/glad.h>
+
+
+
 VertexArray::VertexArray()
 	:m_RendererID(0),m_ShaderPipeID(0)
 {
@@ -16,24 +18,31 @@ VertexArray::~VertexArray()
 	glDeleteVertexArrays(1, &m_RendererID);
 }
 
-void VertexArray::AddBufferLayout(const VertexBuffer& vb,BufferLayout& layout)
+void VertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vb)
 {
 	Bind();
-	vb.Bind();
-	const auto& elements = layout.GetElements();
+	vb->Bind();
+	const auto& BufferLayout = vb->GetBufferLayout();
+	auto& elements = BufferLayout.GetElements();
 	for (const auto& element :elements)
 	{
 		glEnableVertexAttribArray(m_ShaderPipeID);
 		glVertexAttribPointer(	m_ShaderPipeID,
 								element.Count,
-								element.Type,
+								SwitchShaderTypeToGladType(element.Type),
 								element.Normalized,
-								layout.Stride,
-				   (const void*)element.Offset
+								BufferLayout.GetStride(),
+				   (const void*)(intptr_t)element.Offset
 		);
 		m_ShaderPipeID++;
 
 	}
+	m_VertexBuffers.push_back(vb);
+}
+
+void VertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& ib)
+{
+
 }
 
 void VertexArray::Bind()

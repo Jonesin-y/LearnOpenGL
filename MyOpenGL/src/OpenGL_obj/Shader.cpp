@@ -129,3 +129,34 @@ void Shader::SetUniformMat4f(const std::string& name, unsigned int count, unsign
 	GLint location = glGetUniformLocation(m_ShaderID, name.c_str());
 	glProgramUniformMatrix4fv(m_ShaderID,location, count, normalized, value);
 }
+
+const std::shared_ptr<Shader>& ShaderLibrary::GetShaderByName(const std::string& name)
+{
+
+}
+
+
+
+void ShaderLibrary::Add(const std::string& name, const std::shared_ptr<Shader>& shader)
+{
+	if (Exists(name))
+	{
+		std::cout << "Fail to Add Shader because it's already exists in ShaderLibrary!" << std::endl;
+		return;
+	}
+	m_Shaders[name] = shader;
+}
+
+const std::shared_ptr<Shader>& ShaderLibrary::Load(const std::string& name, const std::shared_ptr<Shader>& shader)
+{
+	Add(name, shader);
+	return shader;
+	
+}
+
+bool ShaderLibrary::Exists(const std::string& shader_name)
+{
+	if (m_Shaders.find(shader_name) == m_Shaders.end())
+		return false;
+	return true;
+}

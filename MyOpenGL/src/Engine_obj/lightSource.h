@@ -15,7 +15,7 @@ struct lightSource
 	glm::vec3 diffuse = glm::vec3(0.6f,0.6f,0.6f);
 	glm::vec3 specular = glm::vec3(1.0f,1.0f,1.0f);
 	
-	void ApplyToShader(Shader& shader, const std::string& lightSource_name);
+	void ApplyToShader(std::shared_ptr<Shader>& shader, const std::string& lightSource_name);
 	
 };
 
