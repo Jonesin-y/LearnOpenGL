@@ -99,6 +99,11 @@
   <ItemGroup>
     <ClCompile Include="src\SandBox.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jonesin\Jonesin.vcxproj">
+      <Project>{dbab014f-478b-80ea-50a3-0bc1bc01e74b}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

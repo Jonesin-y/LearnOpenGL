@@ -1,10 +1,12 @@
 #include "pch.h"
 #include "CameraController.h"
-#include "Glad/glad.h"
+#include"Application.h"
+#include"Input.h"
 #include"Camera.h"
+#include<GLFW/glfw3.h>
 
-CameraController::CameraController(Camera camera):
-m_Camera(camera)
+CameraController::CameraController(Camera camera,float deltatime):
+m_Camera(camera),m_DeltaTime(deltatime)
 {
 
 }
@@ -16,12 +18,12 @@ CameraController::~CameraController()
 
 void CameraController::OnUpdate()
 {
-	//if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)				myCamera.ProcessKeyboard(BACKWARD, deltaTime);
-	//if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)				myCamera.ProcessKeyboard(FORWARD, deltaTime);
-	//if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)				myCamera.ProcessKeyboard(LEFT, deltaTime);
-	//if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)				myCamera.ProcessKeyboard(RIGHT, deltaTime);
-	//if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)			myCamera.ProcessKeyboard(UP, deltaTime);
-	//if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)	myCamera.ProcessKeyboard(DOWN, deltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_S))				m_Camera.ProcessKeyboard(BACKWARD, m_DeltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_W))				m_Camera.ProcessKeyboard(FORWARD, m_DeltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_A))				m_Camera.ProcessKeyboard(LEFT, m_DeltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_D))				m_Camera.ProcessKeyboard(RIGHT, m_DeltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_SPACE))			m_Camera.ProcessKeyboard(UP, m_DeltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_LEFT_CONTROL))		m_Camera.ProcessKeyboard(DOWN, m_DeltaTime);
 }
 
 void CameraController::OnScrolled()

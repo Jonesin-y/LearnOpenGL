@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jonesin", "Jonesin\Jonesin.vcxproj", "{DBAB014F-478B-80EA-50A3-0BC1BC01E74B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SandBox", "SandBox\SandBox.vcxproj", "{D43924E3-4019-A37E-4931-2E55B58F09E0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DBAB014F-478B-80EA-50A3-0BC1BC01E74B} = {DBAB014F-478B-80EA-50A3-0BC1BC01E74B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

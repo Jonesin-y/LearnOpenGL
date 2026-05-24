@@ -38,6 +38,8 @@ project "Jonesin"
         "%{prj.name}/src",
         "%{prj.name}/src/Engine",
         "%{prj.name}/src/Engine/Renderer",
+        "%{prj.name}/src/Engine/Renderer/OpenGL",
+        "%{prj.name}/src/Engine/Event",
         "%{prj.name}/src/pch",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.glm}",
@@ -52,14 +54,13 @@ project "Jonesin"
         "glfw3.lib"
     }
 
-    -- 【关键修复】：用通配符无视 location 带来的路径偏移，100% 成功关闭 PCH
     filter "files:**/glad.c"
         enablepch "Off"
     filter {}
 
     filter "system:windows"
         cppdialect "C++20"
-        staticruntime "Off" -- 【关键修复】：顺应官方库，放心使用，绝不会产生任何 DLL
+        staticruntime "Off"
         systemversion "latest"
         defines{
             "GLFW_INCLUDE_NONE"
@@ -91,6 +92,7 @@ project "SandBox"
         "Jonesin/src/Engine",
         "Jonesin/vendor/glm"
     }
+    dependson { "Jonesin" }
     filter "system:windows"
         cppdialect "C++20"
         staticruntime "Off" -- 保持两边一致

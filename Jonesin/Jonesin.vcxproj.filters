@@ -13,9 +13,6 @@
     <Filter Include="src\Engine\Renderer">
       <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Glad">
-      <UniqueIdentifier>{34F61ECF-20C3-79DA-49DC-67823508AF68}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\pch">
       <UniqueIdentifier>{172930A9-8308-AF44-8C20-3A1BF87E15A6}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,9 @@
     </Filter>
     <Filter Include="vendor\glad\src">
       <UniqueIdentifier>{B1098FEA-1D95-FCAE-26A6-7FA392B058AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +60,7 @@
     <ClInclude Include="src\Engine\LayerStack.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Buffer.h">
+    <ClInclude Include="src\Engine\Renderer\OpenGL\Buffer.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\Camera.h">
@@ -75,13 +75,13 @@
     <ClInclude Include="src\Engine\Renderer\Renderer.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Shader.h">
+    <ClInclude Include="src\Engine\Renderer\OpenGL\Shader.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Texture2D.h">
+    <ClInclude Include="src\Engine\Renderer\OpenGL\Texture2D.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\VertexArray.h">
+    <ClInclude Include="src\Engine\Renderer\OpenGL\VertexArray.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\lightSource.h">
@@ -90,7 +90,11 @@
     <ClInclude Include="src\pch\pch.h">
       <Filter>src\pch</Filter>
     </ClInclude>
-    <ClInclude Include="vendor\stb_image\stb_image.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Input.h" />
+    <ClInclude Include="src\Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application.cpp">
@@ -105,7 +109,7 @@
     <ClCompile Include="src\Engine\LayerStack.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\Buffer.cpp">
+    <ClCompile Include="src\Engine\Renderer\OpenGL\Buffer.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\Camera.cpp">
@@ -120,13 +124,13 @@
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\Shader.cpp">
+    <ClCompile Include="src\Engine\Renderer\OpenGL\Shader.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\Texture2D.cpp">
+    <ClCompile Include="src\Engine\Renderer\OpenGL\Texture2D.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\VertexArray.cpp">
+    <ClCompile Include="src\Engine\Renderer\OpenGL\VertexArray.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\lightSource.cpp">
@@ -141,6 +145,10 @@
     <ClCompile Include="vendor\glad\src\glad.c">
       <Filter>vendor\glad\src</Filter>
     </ClCompile>
-    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Input.cpp" />
+    <ClCompile Include="src\Engine\Window.cpp" />
   </ItemGroup>
 </Project>

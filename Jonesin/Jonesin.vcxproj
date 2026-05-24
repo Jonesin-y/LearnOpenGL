@@ -60,7 +60,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;JO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Dependencies\glfw-3.4.bin.WIN64\include;vendor;src;src\Engine;src\Engine\Renderer;src\pch;vendor\glad\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Dependencies\glfw-3.4.bin.WIN64\include;vendor;src;src\Engine;src\Engine\Renderer;src\pch;vendor\glad\include;vendor\glm;src\Engine\Event;src\Engine\Renderer\OpenGL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -105,6 +105,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\Input.h" />
     <ClInclude Include="src\Engine\Application.h" />
     <ClInclude Include="src\Engine\Core.h" />
     <ClInclude Include="src\Engine\EntryPoint.h" />
@@ -115,41 +116,43 @@
     <ClInclude Include="src\Engine\Jonesin.h" />
     <ClInclude Include="src\Engine\Layer.h" />
     <ClInclude Include="src\Engine\LayerStack.h" />
-    <ClInclude Include="src\Engine\Renderer\Buffer.h" />
+    <ClInclude Include="src\Engine\Renderer\OpenGL\Buffer.h" />
     <ClInclude Include="src\Engine\Renderer\Camera.h" />
     <ClInclude Include="src\Engine\Renderer\CameraController.h" />
     <ClInclude Include="src\Engine\Renderer\Material.h" />
     <ClInclude Include="src\Engine\Renderer\Renderer.h" />
-    <ClInclude Include="src\Engine\Renderer\Shader.h" />
-    <ClInclude Include="src\Engine\Renderer\Texture2D.h" />
-    <ClInclude Include="src\Engine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Engine\Renderer\OpenGL\Shader.h" />
+    <ClInclude Include="src\Engine\Renderer\OpenGL\Texture2D.h" />
+    <ClInclude Include="src\Engine\Renderer\OpenGL\VertexArray.h" />
     <ClInclude Include="src\Engine\Renderer\lightSource.h" />
     <ClInclude Include="src\pch\pch.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
+    <ClInclude Include="src\Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\Input.cpp" />
     <ClCompile Include="src\Engine\Application.cpp" />
     <ClCompile Include="src\Engine\Core.cpp" />
     <ClCompile Include="src\Engine\Layer.cpp" />
     <ClCompile Include="src\Engine\LayerStack.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Engine\Renderer\OpenGL\Buffer.cpp" />
     <ClCompile Include="src\Engine\Renderer\Camera.cpp" />
     <ClCompile Include="src\Engine\Renderer\CameraController.cpp" />
     <ClCompile Include="src\Engine\Renderer\Material.cpp" />
     <ClCompile Include="src\Engine\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Texture2D.cpp" />
-    <ClCompile Include="src\Engine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Engine\Renderer\OpenGL\Shader.cpp" />
+    <ClCompile Include="src\Engine\Renderer\OpenGL\Texture2D.cpp" />
+    <ClCompile Include="src\Engine\Renderer\OpenGL\VertexArray.cpp" />
     <ClCompile Include="src\Engine\Renderer\lightSource.cpp" />
     <ClCompile Include="src\ExampleLayer.cpp" />
     <ClCompile Include="src\pch\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\glad\src\glad.c">
-      <ObjectFileName>$(IntDir)\glad1.obj</ObjectFileName>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Engine\Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

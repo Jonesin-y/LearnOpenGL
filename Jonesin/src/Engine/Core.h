@@ -11,5 +11,5 @@ void EnableOpenGLDebugging();
 
 
 //used for event system
-#define BIT(x) (1 << x);
+#define BIT(x) (1 << x)
 #define JO_EVENT_FN std::bind()
