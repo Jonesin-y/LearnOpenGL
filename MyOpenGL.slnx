@@ -3,5 +3,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="MyOpenGL/MyOpenGL.vcxproj" Id="4a075a61-470a-4df5-9631-0e51eb7503d3" />
+  <Project Path="Jonesin/Jonesin.vcxproj" Id="4a075a61-470a-4df5-9631-0e51eb7503d3" />
+  <Project Path="SandBox/SandBox.vcxproj" Id="19528859-c25a-4bc2-b921-92de0a47df23" />
 </Solution>

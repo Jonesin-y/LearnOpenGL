@@ -1,0 +1,2 @@
+﻿  SandBox.cpp
+LINK : fatal error LNK1104: 无法打开文件“D:\HowToRender\MyOpenGL\bin\Debug-windows-x86_64\MyOpenGL\Jonesin.lib”

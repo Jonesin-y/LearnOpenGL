@@ -1,0 +1,19 @@
+﻿  ExampleLayer.cpp
+D:\HowToRender\MyOpenGL\Jonesin\src\Engine\Renderer\Camera.h(4,7): warning C4099: “GLFWwindow”: 类型名称以前使用“struct”现在使用的是“class”
+  (编译源文件“/src/ExampleLayer.cpp”)
+      D:\HowToRender\MyOpenGL\Jonesin\Dependencies\glfw-3.4.bin.WIN64\include\GLFW\glfw3.h(1403,16):
+      参见“GLFWwindow”的声明
+  
+D:\HowToRender\MyOpenGL\Jonesin\src\ExampleLayer.cpp(273,22): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“/src/ExampleLayer.cpp”)
+  
+D:\HowToRender\MyOpenGL\Jonesin\src\ExampleLayer.cpp(275,6): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“/src/ExampleLayer.cpp”)
+  
+D:\HowToRender\MyOpenGL\Jonesin\src\ExampleLayer.cpp(290,36): warning C4805: “==”: 在操作中将类型“int”与类型“bool”混合不安全
+  (编译源文件“/src/ExampleLayer.cpp”)
+  
+D:\HowToRender\MyOpenGL\Jonesin\src\ExampleLayer.cpp(317,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  (编译源文件“/src/ExampleLayer.cpp”)
+  
+  Jonesin.vcxproj -> D:\HowToRender\MyOpenGL\bin\Debug-windows-x86_64\Jonesin\Jonesin.exe
