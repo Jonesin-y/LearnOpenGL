@@ -14,7 +14,7 @@ workspace "MyOpenGL"
 project "Jonesin"
     location "Jonesin"
     language "C++"
-    kind "ConsoleApp"
+    kind "StaticLib"
     targetdir("bin/"..outputdir.."/%{prj.name}")
     objdir("bin-int/"..outputdir.."/%{prj.name}")
     
@@ -37,9 +37,10 @@ project "Jonesin"
         "%{prj.name}/vendor",
         "%{prj.name}/src",
         "%{prj.name}/src/Engine",
+        "%{prj.name}/src/Engine/Core",
         "%{prj.name}/src/Engine/Renderer",
         "%{prj.name}/src/Engine/Renderer/OpenGL",
-        "%{prj.name}/src/Engine/Event",
+        "%{prj.name}/src/Engine/Events",
         "%{prj.name}/src/pch",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.glm}",
@@ -78,7 +79,7 @@ project "Jonesin"
     filter{}
 
 project "SandBox"
-    kind "StaticLib"
+    kind "ConsoleApp"
     location "SandBox"
     language "C++"
     targetdir("bin/"..outputdir.."/%{prj.name}")
@@ -89,7 +90,7 @@ project "SandBox"
     }
     includedirs{
         "Jonesin/vendor",
-        "Jonesin/src/Engine",
+        "Jonesin/src/Engine/Core",
         "Jonesin/vendor/glm"
     }
     dependson { "Jonesin" }

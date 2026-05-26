@@ -18,7 +18,7 @@ unsigned int ShaderDataTypeSize(ShaderType type)
 	case ShaderType::Int4:return 4 * 4;
 	}
 	std::cout << "Invalid Type!" << std::endl;
-	__debugbreak;
+	__debugbreak();
 	return 0;
 }
 
@@ -38,7 +38,7 @@ unsigned int ShaderDataTypeCount(ShaderType type)
 	case ShaderType::Int4:return		4;
 	}
 	std::cout << "Invalid Type!" << std::endl;
-	__debugbreak;
+	__debugbreak();
 	return 0;
 
 }
@@ -59,7 +59,7 @@ unsigned int SwitchShaderTypeToGladType(ShaderType type)
 	case ShaderType::Int4:return GL_INT;
 	}
 	std::cout << "Invalid Type!" << std::endl;
-	__debugbreak;
+	__debugbreak();
 	return 0;
 }
 

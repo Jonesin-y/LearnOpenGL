@@ -23,6 +23,7 @@ double lastX = 0.0f;
 double lastY = 0.0f;
 
 Camera myCamera;
+CameraController myCameraController(myCamera);
 lightSource u_DirLight;
 lightSource u_FlashLight;
 lightSource u_PointLight[4];

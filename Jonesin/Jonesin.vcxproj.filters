@@ -7,11 +7,17 @@
     <Filter Include="src\Engine">
       <UniqueIdentifier>{12A1320E-FE58-745B-6760-4DB753370F4C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine\Event">
-      <UniqueIdentifier>{E32745A8-CF20-64FA-F852-497FE4AA4306}</UniqueIdentifier>
+    <Filter Include="src\Engine\Core">
+      <UniqueIdentifier>{AA407579-16CC-E23D-1FDD-65328BE73E3E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Events">
+      <UniqueIdentifier>{B624EAB0-223B-E846-6BB2-7368D707B9CE}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Engine\Renderer">
       <UniqueIdentifier>{F838018B-649A-DE98-ED07-254B59681558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Engine\Renderer\OpenGL">
+      <UniqueIdentifier>{2C1B9528-182B-41F9-81E4-A5176D133092}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\pch">
       <UniqueIdentifier>{172930A9-8308-AF44-8C20-3A1BF87E15A6}</UniqueIdentifier>
@@ -30,38 +36,41 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Application.h">
-      <Filter>src\Engine</Filter>
+    <ClInclude Include="src\Engine\Core\Application.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Core.h">
-      <Filter>src\Engine</Filter>
+    <ClInclude Include="src\Engine\Core\Core.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\EntryPoint.h">
-      <Filter>src\Engine</Filter>
+    <ClInclude Include="src\Engine\Core\EntryPoint.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Event\Event.h">
-      <Filter>src\Engine\Event</Filter>
+    <ClInclude Include="src\Engine\Core\Input.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Event\KeyEvent.h">
-      <Filter>src\Engine\Event</Filter>
+    <ClInclude Include="src\Engine\Core\Jonesin.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Event\MouseEvent.h">
-      <Filter>src\Engine\Event</Filter>
+    <ClInclude Include="src\Engine\Core\Layer.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Event\WindowEvent.h">
-      <Filter>src\Engine\Event</Filter>
+    <ClInclude Include="src\Engine\Core\LayerStack.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Jonesin.h">
-      <Filter>src\Engine</Filter>
+    <ClInclude Include="src\Engine\Core\Window.h">
+      <Filter>src\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Layer.h">
-      <Filter>src\Engine</Filter>
+    <ClInclude Include="src\Engine\Events\Event.h">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\LayerStack.h">
-      <Filter>src\Engine</Filter>
+    <ClInclude Include="src\Engine\Events\KeyEvent.h">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\OpenGL\Buffer.h">
-      <Filter>src\Engine\Renderer</Filter>
+    <ClInclude Include="src\Engine\Events\MouseEvent.h">
+      <Filter>src\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Events\WindowEvent.h">
+      <Filter>src\Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\Camera.h">
       <Filter>src\Engine\Renderer</Filter>
@@ -72,16 +81,19 @@
     <ClInclude Include="src\Engine\Renderer\Material.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Renderer.h">
-      <Filter>src\Engine\Renderer</Filter>
+    <ClInclude Include="src\Engine\Renderer\OpenGL\Buffer.h">
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\OpenGL\Shader.h">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\OpenGL\Texture2D.h">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\OpenGL\VertexArray.h">
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderer\Renderer3D.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\lightSource.h">
@@ -93,24 +105,28 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Input.h" />
-    <ClInclude Include="src\Engine\Window.h" />
+    <ClInclude Include="src\Engine\Renderer\Meshs\Mesh.h" />
+    <ClInclude Include="src\Engine\Renderer\Environment.h" />
+    <ClInclude Include="src\Engine\Renderer\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\Application.cpp">
-      <Filter>src\Engine</Filter>
+    <ClCompile Include="src\Engine\Core\Application.cpp">
+      <Filter>src\Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Core.cpp">
-      <Filter>src\Engine</Filter>
+    <ClCompile Include="src\Engine\Core\Core.cpp">
+      <Filter>src\Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Layer.cpp">
-      <Filter>src\Engine</Filter>
+    <ClCompile Include="src\Engine\Core\Input.cpp">
+      <Filter>src\Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\LayerStack.cpp">
-      <Filter>src\Engine</Filter>
+    <ClCompile Include="src\Engine\Core\Layer.cpp">
+      <Filter>src\Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\OpenGL\Buffer.cpp">
-      <Filter>src\Engine\Renderer</Filter>
+    <ClCompile Include="src\Engine\Core\LayerStack.cpp">
+      <Filter>src\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Core\Window.cpp">
+      <Filter>src\Engine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\Camera.cpp">
       <Filter>src\Engine\Renderer</Filter>
@@ -121,16 +137,19 @@
     <ClCompile Include="src\Engine\Renderer\Material.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\Renderer.cpp">
-      <Filter>src\Engine\Renderer</Filter>
+    <ClCompile Include="src\Engine\Renderer\OpenGL\Buffer.cpp">
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\OpenGL\Shader.cpp">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\OpenGL\Texture2D.cpp">
-      <Filter>src\Engine\Renderer</Filter>
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\OpenGL\VertexArray.cpp">
+      <Filter>src\Engine\Renderer\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Renderer\Renderer3D.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\lightSource.cpp">
@@ -148,7 +167,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Input.cpp" />
-    <ClCompile Include="src\Engine\Window.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Meshs\Mesh.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Environment.cpp" />
   </ItemGroup>
 </Project>

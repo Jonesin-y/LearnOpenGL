@@ -1,18 +1,21 @@
 #pragma once
 #include"Camera.h"
-class Camera;
-class GLFWwindow;
+class Event;
+class MouseScrolledEvent;
+class MouseMovedEvent;
 class CameraController
 {
 public:
-	CameraController(Camera camera,float deltatime);
+	CameraController(Camera& camera);
 	~CameraController();
-	void OnUpdate();
-	void OnScrolled();
+	void OnUpdate(float deltaTime);
+	bool OnScrolled(const MouseScrolledEvent& event);
+	bool OnMouseMoved(const MouseMovedEvent& event);
+	void OnEvent(Event& event);
+	
 	
 private:
 	Camera m_Camera;
-	float m_DeltaTime;
 
 };
 

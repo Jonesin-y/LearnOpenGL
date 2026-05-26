@@ -22,6 +22,7 @@ public:
 	void ShaderLog();
 	void Bind();
 	void UnBind();
+	void GetActiveUniform()const;//Functions to Get All Active Uniform
 	//Functions for setting uniforms
 	void SetUniform1i(const std::string& name, int value);
 	void SetUniform1f(const std::string& name, float value);

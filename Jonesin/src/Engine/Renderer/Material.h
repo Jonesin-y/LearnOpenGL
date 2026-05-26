@@ -3,9 +3,9 @@
 #include<glad/glad.h>
 
 class Shader;
-struct Material
+class Material
 {
-
+public:
 	float shininess;
 	glm::vec3 colorAmbient = glm::vec3(1.0f,1.0f,1.0f);
 	glm::vec3 colorDiffuse = glm::vec3(1.0f,1.0f,1.0f);
@@ -13,8 +13,9 @@ struct Material
 	
 	GLint diffuseMapID = 1;
 	GLint specularMapID = 2;
-
 	GLint emissionMapID = 3;
 	void ApplyToShader(std::shared_ptr<Shader>& shader,const std::string& material_name);
+private:
+
 };
 
