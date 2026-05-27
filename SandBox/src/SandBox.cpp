@@ -1,11 +1,16 @@
 #include"Jonesin.h"
+#include<memory>
 class ExampleLayer :public Layer
 {
 public:
-	ExampleLayer() = default;
+	ExampleLayer()
+	{
+
+	};
 	~ExampleLayer() = default;
 	virtual void OnAttach()
 	{
+
 	}
 	virtual void OnDetach()
 	{
@@ -17,11 +22,16 @@ public:
 	{
 
 	}
+private:
+	Shader shader
 };
 class SandBox : public Application
 {
 public:
-	SandBox() {};
+	SandBox() 
+	{
+		m_LayerStack->PushLayer(std::make_shared<ExampleLayer>());
+	}
 
 };
 Application* CreateApplication() { return new SandBox; }

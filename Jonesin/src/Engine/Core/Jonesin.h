@@ -4,6 +4,7 @@
 #include "Event.h"
 #include "Layer.h"
 #include "LayerStack.h"
+#include "Shader.h"
 #include "Texture2D.h"
 
 

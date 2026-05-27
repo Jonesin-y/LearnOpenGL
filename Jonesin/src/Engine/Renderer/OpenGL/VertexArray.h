@@ -1,4 +1,5 @@
 #pragma once
+#include"Core.h"
 #include<memory.h>
 #include <vector>
 
@@ -11,15 +12,17 @@ class VertexArray
 public:
 	VertexArray();
 	~VertexArray();
-	void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vb);
-	void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& ib);
+	void AddVertexBuffer(const Ref(VertexBuffer)& vb);
+	void SetIndexBuffer(const Ref(IndexBuffer)& ib);
+	inline std::vector <Ref(VertexBuffer)>& GetVertexBuffers() { return m_VertexBuffers; }
+	inline Ref(IndexBuffer)& GetIndexBuffer() { return m_IndexBuffer; }
 	void Bind();
 	void UnBind();
 
 private:
 	unsigned int m_RendererID;
 	unsigned int m_ShaderPipeID;
-	std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
-	std::shared_ptr<IndexBuffer> m_IndexBuffer;
+	std::vector<Ref(VertexBuffer)> m_VertexBuffers;
+	Ref(IndexBuffer) m_IndexBuffer;
 };
 

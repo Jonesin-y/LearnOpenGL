@@ -123,7 +123,7 @@
     <ClInclude Include="src\Engine\Events\WindowEvent.h" />
     <ClInclude Include="src\Engine\Renderer\Camera.h" />
     <ClInclude Include="src\Engine\Renderer\CameraController.h" />
-    <ClInclude Include="src\Engine\Renderer\Material.h" />
+    <ClInclude Include="src\Engine\Renderer\Materials\Material.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\Buffer.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\Shader.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\Texture2D.h" />
@@ -145,7 +145,7 @@
     <ClCompile Include="src\Engine\Core\Window.cpp" />
     <ClCompile Include="src\Engine\Renderer\Camera.cpp" />
     <ClCompile Include="src\Engine\Renderer\CameraController.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Material.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Materials\Material.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\Buffer.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\Shader.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\Texture2D.cpp" />

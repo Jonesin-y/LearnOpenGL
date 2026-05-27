@@ -18,7 +18,7 @@ void Renderer3D::BeginScene()
 void Renderer3D::SubmitMesh(const std::shared_ptr<Mesh>& mesh, const std::shared_ptr<Material>& material, glm::mat4 transformation)
 {
 
-	mesh->SetMaterial();
+	mesh->SetMaterial(material);
 }
 
 void Renderer3D::EndScene()

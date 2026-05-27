@@ -1,4 +1,5 @@
 #pragma once
+#include<memory>
 class Window;
 class Event;
 class LayerStack;
@@ -18,7 +19,7 @@ public:
 	void PopLayer(Layer* layer);
 	void Run();
 
-private:
+protected:
 	bool m_Running;
 	std::unique_ptr<LayerStack> m_LayerStack;
 	std::unique_ptr<Window> m_Window;

@@ -1,4 +1,5 @@
 #include "pch.h"
+#include"Core.h"
 #include "VertexArray.h"
 #include"Buffer.h"
 #include<glad/glad.h>
@@ -18,7 +19,7 @@ VertexArray::~VertexArray()
 	glDeleteVertexArrays(1, &m_RendererID);
 }
 
-void VertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vb)
+void VertexArray::AddVertexBuffer(const Ref(VertexBuffer)& vb)
 {
 	Bind();
 	vb->Bind();
@@ -40,9 +41,9 @@ void VertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vb)
 	m_VertexBuffers.push_back(vb);
 }
 
-void VertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& ib)
+void VertexArray::SetIndexBuffer(const Ref(IndexBuffer)& ib)
 {
-
+	m_IndexBuffer = ib;
 }
 
 void VertexArray::Bind()

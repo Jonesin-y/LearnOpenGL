@@ -1,4 +1,8 @@
 .vs/
 bin/
-bin_int/
-*.pch                                                                                                                                                               
+bin-int/
+*.pch
+*.ipch
+*.suo
+*.sdf
+*.opendb                                                                                                                                                               

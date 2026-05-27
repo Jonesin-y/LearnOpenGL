@@ -1,4 +1,5 @@
 #pragma once
+#include"Core.h"
 #include<vector>
 class Layer;
 class Event;
@@ -7,14 +8,14 @@ class LayerStack
 public:
 	LayerStack();
 	~LayerStack();
-	inline std::vector<Layer*>::iterator Begin() { return m_Layers.begin(); }
-	inline std::vector<Layer*>::iterator End() { return m_Layers.end(); }
-	void PopOverLayer(Layer* overlayer);
-	void PopLayer(Layer* layer);
-	void PushOverLayer(Layer* overlayer);
-	void PushLayer(Layer* layer);
+	inline std::vector<Ref(Layer)>::iterator Begin() { return m_Layers.begin(); }
+	inline std::vector<Ref(Layer)>::iterator End() { return m_Layers.end(); }
+	void PopOverLayer(Ref(Layer) overlayer);
+	void PopLayer(Ref(Layer) layer);
+	void PushOverLayer(Ref(Layer) overlayer);
+	void PushLayer(Ref(Layer) layer);
 public:
 	int m_InsertIndex;
-	std::vector<Layer*>m_Layers;
+	std::vector<Ref(Layer)>m_Layers;
 };
 

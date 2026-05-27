@@ -78,7 +78,7 @@
     <ClInclude Include="src\Engine\Renderer\CameraController.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderer\Material.h">
+    <ClInclude Include="src\Engine\Renderer\Materials\Material.h">
       <Filter>src\Engine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\Renderer\OpenGL\Buffer.h">
@@ -134,7 +134,7 @@
     <ClCompile Include="src\Engine\Renderer\CameraController.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Engine\Renderer\Material.cpp">
+    <ClCompile Include="src\Engine\Renderer\Materials\Material.cpp">
       <Filter>src\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine\Renderer\OpenGL\Buffer.cpp">
