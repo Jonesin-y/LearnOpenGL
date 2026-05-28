@@ -31,8 +31,10 @@ public:
 	void SetUniformMat3f(const std::string& name, unsigned int count, unsigned char normalized, const float* value);
 	void SetUniformMat4f(const std::string& name, unsigned int count,unsigned char normalized,const float* value);
 	
+	inline std::string GetName() { return m_Name; }
 	static std::shared_ptr<Shader> Create(const std::string& vs_filePath,const std::string& fs_filePath) { return std::make_shared<Shader>(vs_filePath,fs_filePath); }
 private:
+	std::string m_Name;
 	std::string m_fs_filePath;
 	std::string m_vs_filePath;
 	shader_src m_src;

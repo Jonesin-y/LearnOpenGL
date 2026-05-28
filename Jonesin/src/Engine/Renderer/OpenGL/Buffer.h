@@ -77,3 +77,17 @@ private:
 	unsigned int m_Count;
 };
 
+class UniformBuffer
+{
+public:
+	UniformBuffer(unsigned int size);
+	~UniformBuffer() = default;
+	void Submit(const void* data, unsigned int offset, unsigned int size);
+	void Bind();
+	void UnBind();
+private:
+	static unsigned int m_BindingPoint;
+	unsigned int m_RendererID;
+
+};
+unsigned int UniformBuffer::m_BindingPoint = 0;

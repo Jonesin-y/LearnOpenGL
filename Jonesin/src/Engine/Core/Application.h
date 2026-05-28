@@ -1,4 +1,5 @@
 #pragma once
+#include"Core.h"
 #include<memory>
 class Window;
 class Event;
@@ -13,10 +14,10 @@ public:
 	inline static Application* Get() { return s_Application; }
 	void OnEvent(Event& event);
 	void OnUpdate();
-	void PushOverLayer(Layer* overlayer);
-	void PushLayer(Layer* layer);
-	void PopOverLayer(Layer* overlayer);
-	void PopLayer(Layer* layer);
+	void PushOverLayer(Ref(Layer) overlayer);
+	void PushLayer(Ref(Layer) layer);
+	void PopOverLayer(Ref(Layer) overlayer);
+	void PopLayer(Ref(Layer) layer);
 	void Run();
 
 protected:

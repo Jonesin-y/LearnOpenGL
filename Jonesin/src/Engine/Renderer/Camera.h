@@ -36,8 +36,12 @@ public:
 	void ProcessMouseMovement(double xOffset, double yOffset);
 	void ProcessMouseScroll(double xOffset, double yOffset);
 	glm::mat4 GetViewMatrix();
+	inline glm::mat4 GetProjection() { return m_Projection; }
+	inline void SetProjection(const glm::mat4& projection) { m_Projection = projection; }
+
 private:
 	//default camera values
+	glm::mat4 m_Projection;
 	static constexpr glm::vec3 DEFAULT_POSITION = glm::vec3(0.0f, 0.0f, 0.0f);
 	static constexpr glm::vec3 DEFAULT_UP = glm::vec3(0.0f, 1.0f, 0.0f);
 	static constexpr	 float DEFAULT_YAW = -90.0f;

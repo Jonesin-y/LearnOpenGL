@@ -9,7 +9,7 @@
 #include<GLFW/glfw3.h>
 
 CameraController::CameraController(Camera& camera):
-m_Camera(camera)
+m_Camera(camera),m_firstMouse(true)
 {
 
 }
@@ -36,14 +36,26 @@ bool CameraController::OnScrolled(const MouseScrolledEvent& event)
 
 bool CameraController::OnMouseMoved(const MouseMovedEvent& event)
 {
-
-
-
+	m_firstMouse = true;
+	if (m_firstMouse)
+	{
+		m_lastX = event.GetMouseX();
+		m_lastY = event.GetMouseY();
+		m_firstMouse = false;
+	}
+	static double xOffset = 0.0f;
+	static double yOffset = 0.0f;
+	xOffset = event.GetMouseX() - m_lastX;
+	yOffset = m_lastY - event.GetMouseY();
+	m_lastX = event.GetMouseX();
+	m_lastY = event.GetMouseY();
+	m_Camera.ProcessMouseMovement(xOffset, yOffset);
 	return true;
 }
 
 void CameraController::OnEvent(Event& event)
 {
 	EventDispatcher dispatcher(event);
+	dispatcher.Dispatch<MouseMovedEvent>(BIND_EVENT_FN(CameraController::OnMouseMoved));
 	dispatcher.Dispatch<MouseScrolledEvent>(BIND_EVENT_FN(CameraController::OnScrolled));
 }

@@ -3,6 +3,8 @@
 #include<glm/glm.hpp>
 #include<memory>
 class Camera;
+class CameraController;
+class UniformBuffer;
 class Environment;
 class Mesh;
 class Material;
@@ -17,5 +19,7 @@ public:
 private:
 	Ref(Camera) m_Camera;
 	Ref(Environment)m_Environment;
+	Ref(UniformBuffer)m_CameraUniformBuffer;
+	Ref(UniformBuffer)m_EnvironmentUniformBuffer;
 };
 

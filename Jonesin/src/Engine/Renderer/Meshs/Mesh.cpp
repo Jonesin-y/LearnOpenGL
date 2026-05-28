@@ -21,6 +21,3 @@ Mesh::Mesh(const std::vector<Vertex>& vertexs, const std::vector<unsigned int> i
 
 }
 
-void Mesh::Draw()
-{
-}

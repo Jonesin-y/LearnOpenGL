@@ -3,15 +3,21 @@
 #include "Material.h"
 
 
-void Material::ApplyToShader(std::shared_ptr<Shader>& shader,const std::string& material_name)//Only work after relevant shader was used
+Material::Material(const std::string& name)
+	:m_Name(name)
 {
-	shader->SetUniform1f(material_name + ".shininess", shininess);
-	shader->SetUniform3f(material_name + ".colorAmbient", colorAmbient.x, colorAmbient.y, colorAmbient.z);
-	shader->SetUniform3f(material_name + ".colorDiffuse", colorDiffuse.x, colorDiffuse.y, colorDiffuse.z);
-	shader->SetUniform3f(material_name + ".colorSpecular", colorSpecular.x, colorSpecular.y, colorSpecular.z);
-	shader->SetUniform1i(material_name + ".diffuseMapID", diffuseMapID);
-	shader->SetUniform1i(material_name + ".specularMapID",specularMapID);
-	shader->SetUniform1i(material_name + ".emissionMapID", emissionMapID);
+
+}
+
+void Material::Upload()//Only work after relevant shader was used
+{
+	m_Shader->SetUniform1f(m_Name + ".shininess", shininess);
+	m_Shader->SetUniform3f(m_Name + ".colorAmbient", colorAmbient.x, colorAmbient.y, colorAmbient.z);
+	m_Shader->SetUniform3f(m_Name + ".colorDiffuse", colorDiffuse.x, colorDiffuse.y, colorDiffuse.z);
+	m_Shader->SetUniform3f(m_Name + ".colorSpecular", colorSpecular.x, colorSpecular.y, colorSpecular.z);
+	m_Shader->SetUniform1i(m_Name + ".diffuseMapID", diffuseMapID);
+	m_Shader->SetUniform1i(m_Name + ".specularMapID",specularMapID);
+	m_Shader->SetUniform1i(m_Name + ".emissionMapID", emissionMapID);
 
 }
 

@@ -45,22 +45,22 @@
 		}
 	}
 
-	void Application::PushOverLayer(Layer* overlayer)
+	void Application::PushOverLayer(Ref(Layer) overlayer)
 	{
 		m_LayerStack->PushOverLayer(overlayer);
 	}
 
-	void Application::PushLayer(Layer* layer)
+	void Application::PushLayer(Ref(Layer) layer)
 	{
 		m_LayerStack->PushLayer(layer);
 	}
 
-	void Application::PopOverLayer(Layer* overlayer)
+	void Application::PopOverLayer(Ref(Layer) overlayer)
 	{
 		m_LayerStack->PopOverLayer(overlayer);
 	}
 
-	void Application::PopLayer(Layer* layer)
+	void Application::PopLayer(Ref(Layer) layer)
 	{
 		m_LayerStack->PopLayer(layer);
 	}

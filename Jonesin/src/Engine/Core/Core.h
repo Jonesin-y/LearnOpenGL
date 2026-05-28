@@ -1,7 +1,8 @@
 #pragma once
 #define Ref(x) std::shared_ptr<x>
 #define Scope(x) std::unique_ptr<x>
-
+#define CreateRef(x) std::make_shared<x>
+#define CreateScope(x) std::make_unique<x>
 #include<glad/glad.h>
 void APIENTRY glDebugOutput(GLenum source,
 	GLenum type,

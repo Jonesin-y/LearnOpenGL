@@ -13,14 +13,12 @@ public:
 	Mesh() = default;
 	~Mesh() = default;
 	inline void SetMaterial(const Ref(Material)& material) { m_Material = material; }
-	void Draw();
 private:
 	std::vector<Vertex>m_Vertexs;
 	std::vector<unsigned int>m_Indices;
 	std::vector<Texture2D*>m_Textures;
 
 
-	Ref(ShaderLibrary)m_ShaderLibrary;
 	Ref(Material) m_Material;
 	Ref(VertexArray) m_VertexArray;
 };

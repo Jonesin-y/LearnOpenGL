@@ -19,16 +19,16 @@ struct lightSource
 	vec3 diffuse;
 	vec3 specular;
 };
-
+layout(std140,binding = 1) uniform Environment
+{
+	lightSource PointLight[4];
+	lightSource DirLight;
+	lightSource FlashLight;
+};
 
 
 uniform mapMaterial u_mapMaterial;
 
-uniform lightSource u_light;
-
-uniform lightSource u_DirLight;
-uniform lightSource u_PointLight[4];
-uniform lightSource u_FlashLight;
 
 uniform vec3 u_viewPos;
 uniform mat4 u_Model;
@@ -121,12 +121,12 @@ vec3 caculateFlashLight(lightSource FlashLight)
 		material_specular = vec3(texture(u_mapMaterial.specularMapID,f_TexCoord));
 		material_emission = vec3(texture(u_mapMaterial.emissionMapID,f_TexCoord));
 
-		vec3 DirLight  	= 	caculateDirLight(u_DirLight);
-		vec3 SpotLight 	= 	caculateSpotLight(u_PointLight[0])+
-							caculateSpotLight(u_PointLight[1])+
-							caculateSpotLight(u_PointLight[2])+
-							caculateSpotLight(u_PointLight[3]);
-		vec3 FlashLight = 	caculateFlashLight(u_FlashLight);
+		vec3 DirLight  	= 	caculateDirLight(DirLight);
+		vec3 SpotLight 	= 	caculateSpotLight(PointLight[0])+
+							caculateSpotLight(PointLight[1])+
+							caculateSpotLight(PointLight[2])+
+							caculateSpotLight(PointLight[3]);
+		vec3 FlashLight = 	caculateFlashLight(FlashLight);
 
 		vec3 emission 	=0.3*material_emission;
 		vec3 result		= DirLight + SpotLight + FlashLight + emission;

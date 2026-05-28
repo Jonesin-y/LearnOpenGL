@@ -17,5 +17,9 @@ public:
 private:
 	Camera m_Camera;
 
+	//deal with Mouse Moved event,this may be let you feel wired,so do i,it will be optimized in the future;
+	bool m_firstMouse;
+	float m_lastX, m_lastY;
+
 };
 

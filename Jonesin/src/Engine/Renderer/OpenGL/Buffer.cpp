@@ -174,3 +174,27 @@ inline ::std::shared_ptr<IndexBuffer> IndexBuffer::Create(const void* data, unsi
 	return result;
 }
 
+UniformBuffer::UniformBuffer(unsigned int size)
+{
+	glGenBuffers(1, &m_RendererID);
+	glBindBuffer(GL_UNIFORM_BUFFER, m_RendererID);
+	glBufferData(GL_UNIFORM_BUFFER, size, NULL, GL_STATIC_DRAW);
+	glBindBufferBase(GL_UNIFORM_BUFFER, UniformBuffer::m_BindingPoint, m_RendererID);
+	UniformBuffer::m_BindingPoint++;
+	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+}
+void UniformBuffer::Submit(const void* data, unsigned int offset, unsigned int size)
+{
+	Bind();
+	glBufferSubData(GL_UNIFORM_BUFFER, offset, size, data);
+}
+
+void UniformBuffer::Bind()
+{
+	glBindBuffer(GL_UNIFORM_BUFFER, m_RendererID);
+}
+
+void UniformBuffer::UnBind()
+{
+	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+}

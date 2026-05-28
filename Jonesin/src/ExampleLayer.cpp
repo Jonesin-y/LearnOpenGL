@@ -121,7 +121,7 @@ int main(void)
 	//
 	//
 	//};
-	Material u_mapMaterial;
+	Material u_mapMaterial("mapMaterial");
 	u_mapMaterial.shininess = 32.0f;
 	u_mapMaterial.diffuseMapID = 1;
 	u_mapMaterial.specularMapID = 2;
@@ -266,7 +266,7 @@ glm::vec3 cubePositions[] =
 	u_DirLight.ApplyToShader(Basic_shader, "u_DirLight");
 
 
-	u_mapMaterial.ApplyToShader(Basic_shader, "u_mapMaterial");
+	u_mapMaterial.Upload();
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
