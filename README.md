@@ -7,6 +7,7 @@
   渲染器类以及相关高级对象类是自主实现
   
   目前采用即时渲染的模式，Renderer3D类的主要渲染接口为
+  
   BeginScene(),
   
   Submit(Mesh& mesh,Material& material,glm::mat4 transform)，
