@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Core.h"
 #include "Shader.h"
 
 Shader::Shader(const std::string& vs_filePath,const std::string& fs_filePath)
@@ -132,8 +133,9 @@ void Shader::SetUniformMat4f(const std::string& name, unsigned int count, unsign
 
 const std::shared_ptr<Shader>& ShaderLibrary::GetShaderByName(const std::string& name)
 {
+	static Ref(Shader)s_EmptyPointer = nullptr;
 	if (Exists(name)) return m_Shaders[name];
-	return nullptr;
+	return s_EmptyPointer;
 }
 
 

@@ -2,6 +2,13 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 struct GLFWwindow;
+struct CameraData
+{
+	CameraData(glm::vec3 pos,glm::mat4 proj,glm::mat4 view);
+	alignas(16) glm::vec3 CameraPos;
+	alignas(16) glm::mat4 CameraProjMat4;
+	alignas(16) glm::mat4 CameraViewMat4;
+};
 enum Camera_Movement
 {
 	FORWARD,
@@ -43,6 +50,7 @@ private:
 	//default camera values
 	glm::mat4 m_Projection;
 	static constexpr glm::vec3 DEFAULT_POSITION = glm::vec3(0.0f, 0.0f, 0.0f);
+	static constexpr glm::vec3 DEFAULT_FRONT= glm::vec3(0.0f, 0.0f, -1.0f);
 	static constexpr glm::vec3 DEFAULT_UP = glm::vec3(0.0f, 1.0f, 0.0f);
 	static constexpr	 float DEFAULT_YAW = -90.0f;
 	static constexpr	 float DEFAULT_PITCH = 0.0f;

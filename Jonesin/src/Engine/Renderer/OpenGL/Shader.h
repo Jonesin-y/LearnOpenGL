@@ -32,7 +32,6 @@ public:
 	void SetUniformMat4f(const std::string& name, unsigned int count,unsigned char normalized,const float* value);
 	
 	inline std::string GetName() { return m_Name; }
-	static std::shared_ptr<Shader> Create(const std::string& vs_filePath,const std::string& fs_filePath) { return std::make_shared<Shader>(vs_filePath,fs_filePath); }
 private:
 	std::string m_Name;
 	std::string m_fs_filePath;
@@ -42,6 +41,7 @@ private:
 };
 class ShaderLibrary
 {
+public:
 	const std::shared_ptr<Shader>& GetShaderByName(const std::string& name);
 	void Add(const std::string& name,const std::shared_ptr<Shader>& shader);
 	const std::shared_ptr<Shader>& Load(const std::string& name ,const std::shared_ptr<Shader>& shader);

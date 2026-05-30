@@ -1,4 +1,4 @@
-#version 330 core
+#version 430 core
 struct mapMaterial
 {
 	float shininess;
@@ -19,18 +19,23 @@ struct lightSource
 	vec3 diffuse;
 	vec3 specular;
 };
-
+layout(std140,binding = 0)uniform CameraMat
+{
+	vec3 viewPos;
+	mat4 Proj;
+	mat4 View;
+};
+layout(std140,binding = 1) uniform Environment
+{
+	lightSource PointLight[4];
+	lightSource DirLight;
+	lightSource FlashLight;
+};
 
 
 uniform mapMaterial u_mapMaterial;
 
-uniform lightSource u_light;
 
-uniform lightSource u_DirLight;
-uniform lightSource u_PointLight[4];
-uniform lightSource u_FlashLight;
-
-uniform vec3 u_viewPos;
 uniform mat4 u_Model;
 in vec3 f_normal;
 in vec3 f_fragPos;
@@ -47,7 +52,7 @@ vec3 material_emission;
 
 vec3 caculateDirLight(lightSource DirLight)
 {
-	vec3 lightDir = normalize(DirLight.direction);
+	vec3 lightDir = -normalize(DirLight.direction);
 	vec3 ambient = material_ambient*DirLight.ambient;
 	float diff =  max(dot(lightDir,norm),0.0f);
 	vec3 diffuse = DirLight.intensity *diff * material_diffuse * DirLight.diffuse;
@@ -60,7 +65,7 @@ vec3 caculateDirLight(lightSource DirLight)
 
 vec3 caculateSpotLight(lightSource SpotLight)
 {
-	vec3 viewDir = normalize(u_viewPos - f_fragPos);
+	vec3 viewDir = normalize(viewPos - f_fragPos);
 	vec3 lightDir = normalize(SpotLight.position - f_fragPos);
 
 	//caculate attenuation
@@ -88,7 +93,7 @@ vec3 caculateSpotLight(lightSource SpotLight)
 vec3 caculateFlashLight(lightSource FlashLight)
 {
 	vec3 lightDir = normalize(FlashLight.position - f_fragPos);
-	vec3 viewDir = normalize(u_viewPos - f_fragPos);
+	vec3 viewDir = normalize(viewPos - f_fragPos);
 	//caculate attenuation
 	float attenuation = 1.0f;
 	float distance = length(FlashLight.position-f_fragPos);
@@ -114,19 +119,19 @@ vec3 caculateFlashLight(lightSource FlashLight)
 	void main()
 	{
 		norm = normalize(f_normal);
-		viewDir = normalize(u_viewPos - f_fragPos);
+		viewDir = normalize(viewPos - f_fragPos);
 		
 		material_diffuse = vec3(texture(u_mapMaterial.diffuseMapID,f_TexCoord));
 		material_ambient =material_diffuse;
 		material_specular = vec3(texture(u_mapMaterial.specularMapID,f_TexCoord));
 		material_emission = vec3(texture(u_mapMaterial.emissionMapID,f_TexCoord));
 
-		vec3 DirLight  	= 	caculateDirLight(u_DirLight);
-		vec3 SpotLight 	= 	caculateSpotLight(u_PointLight[0])+
-							caculateSpotLight(u_PointLight[1])+
-							caculateSpotLight(u_PointLight[2])+
-							caculateSpotLight(u_PointLight[3]);
-		vec3 FlashLight = 	caculateFlashLight(u_FlashLight);
+		vec3 DirLight  	= 	caculateDirLight(DirLight);
+		vec3 SpotLight 	= 	caculateSpotLight(PointLight[0])+
+							caculateSpotLight(PointLight[1])+
+							caculateSpotLight(PointLight[2])+
+							caculateSpotLight(PointLight[3]);
+		vec3 FlashLight = 	caculateFlashLight(FlashLight);
 
 		vec3 emission 	=0.3*material_emission;
 		vec3 result		= DirLight + SpotLight + FlashLight + emission;

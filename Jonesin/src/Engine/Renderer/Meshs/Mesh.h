@@ -9,15 +9,15 @@ class Material;
 class Mesh
 {
 public:
-	Mesh(const std::vector<Vertex>&vertexs,const std::vector<unsigned int>indices,std::vector<Texture2D*>textures);
+	Mesh(const std::vector<Vertex>&vertexs,const std::vector<unsigned int>&indices);
 	Mesh() = default;
 	~Mesh() = default;
+	void Bind();
 	inline void SetMaterial(const Ref(Material)& material) { m_Material = material; }
+	inline std::vector<unsigned int>& GetIndices() { return m_Indices; }
 private:
 	std::vector<Vertex>m_Vertexs;
 	std::vector<unsigned int>m_Indices;
-	std::vector<Texture2D*>m_Textures;
-
 
 	Ref(Material) m_Material;
 	Ref(VertexArray) m_VertexArray;

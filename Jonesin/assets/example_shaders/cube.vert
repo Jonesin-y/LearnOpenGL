@@ -4,8 +4,8 @@ layout (location = 1) in vec3 normal;
 layout(location = 2) in vec2 TexCoord;
 layout(std140,binding = 0)uniform CameraMat
 {
-	mat4 View;
 	mat4 Proj;
+	mat4 View;
 };
 uniform mat4 u_Model;
 

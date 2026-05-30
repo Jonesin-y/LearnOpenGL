@@ -7,7 +7,7 @@ class LayerStack
 {
 public:
 	LayerStack();
-	~LayerStack();
+	virtual ~LayerStack();
 	inline std::vector<Ref(Layer)>::iterator Begin() { return m_Layers.begin(); }
 	inline std::vector<Ref(Layer)>::iterator End() { return m_Layers.end(); }
 	void PopOverLayer(Ref(Layer) overlayer);

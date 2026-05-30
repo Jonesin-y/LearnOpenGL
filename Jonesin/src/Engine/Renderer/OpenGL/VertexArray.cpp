@@ -39,16 +39,19 @@ void VertexArray::AddVertexBuffer(const Ref(VertexBuffer)& vb)
 
 	}
 	m_VertexBuffers.push_back(vb);
+	vb->Bind();
 }
 
 void VertexArray::SetIndexBuffer(const Ref(IndexBuffer)& ib)
 {
 	m_IndexBuffer = ib;
+	ib->Bind();
 }
 
 void VertexArray::Bind()
 {
 	glBindVertexArray(m_RendererID);
+
 }
 
 void VertexArray::UnBind()

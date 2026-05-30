@@ -17,7 +17,6 @@ class Window
 {
 public:
 	Window(const WindowProps& prop);
-	Window() = default;
 	~Window();
 	bool Init(const WindowProps& prop);
 	void OnUpdate();

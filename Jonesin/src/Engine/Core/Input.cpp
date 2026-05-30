@@ -3,10 +3,18 @@
 #include"Application.h"
 #include "Window.h"
 #include"GLFW/glfw3.h"
+Input* Input::s_Input = nullptr;
 bool Input::IsKeyPressed(int KeyCode)
 {
 	GLFWwindow* window = Application::Get()->GetWindow().GetNativeWindow();
 	if (glfwGetKey(window, KeyCode) == GLFW_PRESS) return true;
+	return false;
+}
+
+bool Input::IsKeyReleased(int KeyCode)
+{
+	GLFWwindow* window = Application::Get()->GetWindow().GetNativeWindow();
+	if (glfwGetKey(window, KeyCode) == GLFW_RELEASE) return true;
 	return false;
 }
 

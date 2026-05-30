@@ -22,13 +22,13 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -107,9 +107,6 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Engine\Core\Scene.h" />
-    <ClInclude Include="src\Engine\Renderer\Environment.h" />
-    <ClInclude Include="src\Engine\Renderer\Meshs\Mesh.h" />
     <ClInclude Include="src\Engine\Core\Application.h" />
     <ClInclude Include="src\Engine\Core\Core.h" />
     <ClInclude Include="src\Engine\Core\EntryPoint.h" />
@@ -117,6 +114,7 @@
     <ClInclude Include="src\Engine\Core\Jonesin.h" />
     <ClInclude Include="src\Engine\Core\Layer.h" />
     <ClInclude Include="src\Engine\Core\LayerStack.h" />
+    <ClInclude Include="src\Engine\Core\Scene.h" />
     <ClInclude Include="src\Engine\Core\Window.h" />
     <ClInclude Include="src\Engine\Events\Event.h" />
     <ClInclude Include="src\Engine\Events\KeyEvent.h" />
@@ -124,37 +122,37 @@
     <ClInclude Include="src\Engine\Events\WindowEvent.h" />
     <ClInclude Include="src\Engine\Renderer\Camera.h" />
     <ClInclude Include="src\Engine\Renderer\CameraController.h" />
+    <ClInclude Include="src\Engine\Renderer\Environment.h" />
     <ClInclude Include="src\Engine\Renderer\Materials\Material.h" />
+    <ClInclude Include="src\Engine\Renderer\Meshs\Mesh.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\Buffer.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\Shader.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\Texture2D.h" />
     <ClInclude Include="src\Engine\Renderer\OpenGL\VertexArray.h" />
     <ClInclude Include="src\Engine\Renderer\Renderer3D.h" />
-    <ClInclude Include="src\Engine\Renderer\lightSource.h" />
     <ClInclude Include="src\Engine\Renderer\Vertex.h" />
+    <ClInclude Include="src\Engine\Renderer\lightSource.h" />
     <ClInclude Include="src\pch\pch.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\Core\Scene.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Environment.cpp" />
-    <ClCompile Include="src\Engine\Renderer\Meshs\Mesh.cpp" />
     <ClCompile Include="src\Engine\Core\Application.cpp" />
-    <ClCompile Include="src\Engine\Core\Core.cpp" />
     <ClCompile Include="src\Engine\Core\Input.cpp" />
     <ClCompile Include="src\Engine\Core\Layer.cpp" />
     <ClCompile Include="src\Engine\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Engine\Core\Scene.cpp" />
     <ClCompile Include="src\Engine\Core\Window.cpp" />
     <ClCompile Include="src\Engine\Renderer\Camera.cpp" />
     <ClCompile Include="src\Engine\Renderer\CameraController.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Environment.cpp" />
     <ClCompile Include="src\Engine\Renderer\Materials\Material.cpp" />
+    <ClCompile Include="src\Engine\Renderer\Meshs\Mesh.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\Buffer.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\Shader.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\Texture2D.cpp" />
     <ClCompile Include="src\Engine\Renderer\OpenGL\VertexArray.cpp" />
     <ClCompile Include="src\Engine\Renderer\Renderer3D.cpp" />
     <ClCompile Include="src\Engine\Renderer\lightSource.cpp" />
-    <ClCompile Include="src\ExampleLayer.cpp" />
     <ClCompile Include="src\pch\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

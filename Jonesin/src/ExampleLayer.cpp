@@ -17,8 +17,6 @@ bool f_Pressed = false;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 float rotateSpeed = 125.0f;
-float moveSpeed = 5.0f;
-static glm::vec3 cameraFront = glm::vec3(0.0f,0.0f,-1.0f);
 double lastX = 0.0f;
 double lastY = 0.0f;
 
@@ -126,6 +124,7 @@ int main(void)
 	u_mapMaterial.diffuseMapID = 1;
 	u_mapMaterial.specularMapID = 2;
 	u_mapMaterial.emissionMapID = 3;
+	Material u_lightSourceMaterial("lightSourceMaterial");
 
 	float vertices[] = {
 		// positions          // normals           // texture coords
@@ -226,21 +225,21 @@ glm::vec3 cubePositions[] =
 
 
 	//preprocess OpenGL_obj
-	std::shared_ptr<Texture2D> defaultTexture = Texture2D::Create("assets/Texture2D/defaultTexture.png");
-	std::shared_ptr<Texture2D>  container2 = Texture2D::Create("assets/Texture2D/container2.png");
-	std::shared_ptr<Texture2D>  SpecularMap = Texture2D::Create("assets/Texture2D/SpecularMap.png");
-	std::shared_ptr<Texture2D>  emission = Texture2D::Create("assets/Texture2D/emission.jpg");
+	std::shared_ptr<Texture2D>  defaultTexture =	Texture2D::Create("assets/Texture2D/defaultTexture.png");
+	std::shared_ptr<Texture2D>  container2 =		Texture2D::Create("assets/Texture2D/container2.png");
+	std::shared_ptr<Texture2D>  SpecularMap =		Texture2D::Create("assets/Texture2D/SpecularMap.png");
+	std::shared_ptr<Texture2D>  emission =			Texture2D::Create("assets/Texture2D/emission.jpg");
 	defaultTexture->Bind(0);
 	container2->Bind(1);
 	SpecularMap->Bind(2);
 	emission->Bind(3);
-	std::shared_ptr<Shader>Basic_shader = Shader::Create("assets/shaders/cube.vert","assets/shaders/cube.frag");
-	std::shared_ptr<Shader>Light_shader = Shader::Create("assets/shaders/light.vert","assets/shaders/light.frag");
+	std::shared_ptr<Shader>Basic_shader = std::make_shared<Shader>("assets/shaders/cube.vert","assets/shaders/cube.frag");
+	std::shared_ptr<Shader>Light_shader = std::make_shared<Shader>("assets/shaders/light.vert","assets/shaders/light.frag");
 	GLuint Basic_shader_id = Basic_shader->GetShaderID();
 	GLuint Light_shader_id = Light_shader->GetShaderID();
 	VertexArray VAO = VertexArray();
-	auto vb = VertexBuffer::Create(vertices, sizeof(vertices));
-	auto ib = IndexBuffer::Create(indices, sizeof(indices));
+	auto vb = std::make_shared<VertexBuffer>(vertices, sizeof(vertices));
+	auto ib = std::make_shared<IndexBuffer>(indices, sizeof(indices));
 	BufferLayout layout = {
 		{ShaderType::Float3,"a_Position"},
 		{ShaderType::Float3,"a_Normal"},
@@ -273,8 +272,7 @@ glm::vec3 cubePositions[] =
 	{
 		/* Render here */
 		float currentFrame = glfwGetTime();
-		deltaTime = (deltaTime == 0.0f
-			) ? 1.0 / 144.0f : currentFrame - lastFrame;
+		deltaTime = (deltaTime == 0.0f) ? 1.0 / 144.0f : currentFrame - lastFrame;
 		glfwPollEvents();
 
 		//deal with key code

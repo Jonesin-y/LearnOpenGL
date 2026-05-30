@@ -2,7 +2,6 @@
 layout (location = 0) in vec3 position;
 layout(std140,binding = 0)uniform CameraMat
 {
-	vec3 viewPos;
 	mat4 Proj;
 	mat4 View;
 };

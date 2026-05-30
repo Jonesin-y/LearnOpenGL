@@ -29,9 +29,11 @@ Camera::Camera(glm::vec3 position, glm::vec3 up, float pitch , float yaw):
 	WorldUp(up),
 	Pitch(pitch),
 	Yaw(yaw),
+	Front(DEFAULT_FRONT),
 	Sensitivity(DEFAULT_SENSITYVITY),
 	Zoom(DEFAULT_ZOOM),
-	Speed(DEFAULT_SPEED)
+	Speed(DEFAULT_SPEED),
+	m_Projection(glm::perspective(glm::radians(45.0f), 960.0f / 640.0f, 0.1f, 100.0f))
 {
 	updateCameraVectors();
 }
@@ -93,9 +95,14 @@ glm::mat4 Camera::GetViewMatrix()
 
 void Camera::updateCameraVectors()
 {
-	Right = glm::normalize(glm::cross(Front,Up));
 	Front.x = cos(glm::radians(Pitch)) * cos(glm::radians(Yaw));
 	Front.y = sin(glm::radians(Pitch));
 	Front.z = cos(glm::radians(Pitch)) * sin(glm::radians(Yaw));
 	Front = glm::normalize(Front);
+	Right = glm::normalize(glm::cross(Front, WorldUp));
+}
+
+CameraData::CameraData(glm::vec3 pos,glm::mat4 proj,glm::mat4 view)
+	:CameraPos(pos),CameraProjMat4(proj),CameraViewMat4(view)
+{
 }

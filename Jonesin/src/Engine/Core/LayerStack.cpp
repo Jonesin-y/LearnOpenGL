@@ -11,24 +11,20 @@ LayerStack::LayerStack()
 
 LayerStack::~LayerStack()
 {
-	for (Layer* layer : m_Layers)
-	{
-		delete layer;
-	}
 }
 
-void LayerStack::PopOverLayer(Layer* overlayer)
+void LayerStack::PopOverLayer(Ref(Layer) overlayer)
 {
 	auto it = std::find(m_Layers.begin(), m_Layers.end(), overlayer);
 	if (it != m_Layers.end()) { 
 		m_Layers.erase(it);
-		overlayer->OnUpdate();
+		overlayer->OnDetach();
 		return;
 	}
 	std::cout << "LayerStack doesn't exist this Layer!" << std::endl;
 }
 
-void LayerStack::PopLayer(Layer* layer)
+void LayerStack::PopLayer(Ref(Layer) layer)
 {
 	auto it = std::find(m_Layers.begin(), m_Layers.end(), layer);
 	if (it != m_Layers.end()) {
@@ -41,12 +37,12 @@ void LayerStack::PopLayer(Layer* layer)
 
 }
 
-void LayerStack::PushOverLayer(Layer* overlayer)
+void LayerStack::PushOverLayer(Ref(Layer) overlayer)
 {
 	m_Layers.emplace_back(overlayer);
 }
 
-void LayerStack::PushLayer(Layer* layer)
+void LayerStack::PushLayer(Ref(Layer) layer)
 {
 	m_Layers.emplace(m_Layers.begin() + m_InsertIndex, layer);
 	layer->OnAttach();

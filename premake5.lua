@@ -1,5 +1,5 @@
 workspace "MyOpenGL"
-    startproject "Jonesin"
+    startproject "SandBox"
     outputdir="%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
     architecture "x64"
     configurations {"Debug", "Release"}
@@ -89,9 +89,15 @@ project "SandBox"
         "%{prj.name}/src/**.cpp"
     }
     includedirs{
+        "Jonesin/Dependencies/glfw-3.4.bin.WIN64/include",
         "Jonesin/vendor",
         "Jonesin/src/Engine/Core",
-        "Jonesin/vendor/glm"
+        "Jonesin/src/Engine/Events",
+        "Jonesin/src/Engine/Renderer",
+        "Jonesin/src/Engine/Renderer/OpenGL",
+        "Jonesin/vendor/glm",
+        "Jonesin/vendor/glad/include",
+
     }
     dependson { "Jonesin" }
     filter "system:windows"

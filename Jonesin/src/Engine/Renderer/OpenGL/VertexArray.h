@@ -1,6 +1,6 @@
 #pragma once
 #include"Core.h"
-#include<memory.h>
+#include<memory>
 #include <vector>
 
 class VertexBuffer;

@@ -22,7 +22,7 @@ Window::Window(const WindowProps& prop)
 
 Window::~Window()
 {
-
+	glfwDestroyWindow(m_Window);
 }
 
 bool Window::Init(const WindowProps& prop = WindowProps())
@@ -39,7 +39,7 @@ bool Window::Init(const WindowProps& prop = WindowProps())
 	glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetWindowUserPointer(m_Window, &m_Data);
 	glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods){
-			WindowData data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			switch (action)
 			{
 			case GLFW_PRESS:
@@ -63,7 +63,7 @@ bool Window::Init(const WindowProps& prop = WindowProps())
 			}
 		});
 	glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods){
-			WindowData data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			switch (action)
 			{
 				{
@@ -81,29 +81,35 @@ bool Window::Init(const WindowProps& prop = WindowProps())
 			}
 		});
 	glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double x, double y) {
-			WindowData data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			MouseMovedEvent event(x, y);
 			data.EventCallback(event);
 
 
 		});
+	glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window) {
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowCloseEvent event;
+			data.EventCallback(event);
+
+		});
 	glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
-			WindowData data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			WindowResizeEvent event(width, height);
 			data.EventCallback(event);
 
 		});
 	glfwSetWindowPosCallback(m_Window, [](GLFWwindow* window, int xPos, int yPos) {
-			WindowData data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			WindowMovedEvent event(xPos, yPos);
-
+			data.EventCallback(event);
 		});
 	return true;
 }
 
 void Window::OnUpdate()
 {
-
+	glfwPollEvents();
 }
 
 void Window::SetVSync(bool VSync)

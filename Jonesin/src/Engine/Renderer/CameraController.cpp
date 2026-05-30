@@ -8,7 +8,7 @@
 #include"MouseEvent.h"
 #include<GLFW/glfw3.h>
 
-CameraController::CameraController(Camera& camera):
+CameraController::CameraController(Ref(Camera) camera) :
 m_Camera(camera),m_firstMouse(true)
 {
 
@@ -21,36 +21,32 @@ CameraController::~CameraController()
 
 void CameraController::OnUpdate(float deltaTime)
 {
-	if (Input::IsKeyPressed(GLFW_KEY_S))				m_Camera.ProcessKeyboard(BACKWARD, deltaTime);
-	if (Input::IsKeyPressed(GLFW_KEY_W))				m_Camera.ProcessKeyboard(FORWARD, deltaTime);
-	if (Input::IsKeyPressed(GLFW_KEY_A))				m_Camera.ProcessKeyboard(LEFT, deltaTime);
-	if (Input::IsKeyPressed(GLFW_KEY_D))				m_Camera.ProcessKeyboard(RIGHT, deltaTime);
-	if (Input::IsKeyPressed(GLFW_KEY_SPACE))			m_Camera.ProcessKeyboard(UP, deltaTime);
-	if (Input::IsKeyPressed(GLFW_KEY_LEFT_CONTROL))		m_Camera.ProcessKeyboard(DOWN, deltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_S))				m_Camera->ProcessKeyboard(BACKWARD, deltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_W))				m_Camera->ProcessKeyboard(FORWARD, deltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_A))				m_Camera->ProcessKeyboard(LEFT, deltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_D))				m_Camera->ProcessKeyboard(RIGHT, deltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_SPACE))			m_Camera->ProcessKeyboard(UP, deltaTime);
+	if (Input::IsKeyPressed(GLFW_KEY_LEFT_CONTROL))		m_Camera->ProcessKeyboard(DOWN, deltaTime);
 }
 
-bool CameraController::OnScrolled(const MouseScrolledEvent& event)
+void CameraController::OnScrolled(MouseScrolledEvent& event)
 {
-	return true;
 }
 
-bool CameraController::OnMouseMoved(const MouseMovedEvent& event)
+void CameraController::OnMouseMoved(MouseMovedEvent& event)
 {
-	m_firstMouse = true;
 	if (m_firstMouse)
 	{
 		m_lastX = event.GetMouseX();
 		m_lastY = event.GetMouseY();
 		m_firstMouse = false;
 	}
-	static double xOffset = 0.0f;
-	static double yOffset = 0.0f;
-	xOffset = event.GetMouseX() - m_lastX;
-	yOffset = m_lastY - event.GetMouseY();
+	m_xOffset = event.GetMouseX() - m_lastX;
+	m_yOffset = m_lastY - event.GetMouseY();
 	m_lastX = event.GetMouseX();
 	m_lastY = event.GetMouseY();
-	m_Camera.ProcessMouseMovement(xOffset, yOffset);
-	return true;
+	m_Camera->ProcessMouseMovement(m_xOffset, m_yOffset);
+	event.Handled = true;
 }
 
 void CameraController::OnEvent(Event& event)

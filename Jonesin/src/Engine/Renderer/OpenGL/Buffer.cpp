@@ -129,15 +129,6 @@ void VertexBuffer::UnBind() const
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-inline ::std::shared_ptr<VertexBuffer> VertexBuffer::Create(const void* data, unsigned int count) 
-{
-	return std::make_shared<VertexBuffer>(data, count); 
-}
-
-inline ::std::shared_ptr<VertexBuffer> VertexBuffer::Create(const std::vector<Vertex>& vertexs) 
-{
-	return std::make_shared<VertexBuffer>(vertexs); 
-}
 
 //-------------IndexBuffer----------------//
 IndexBuffer::IndexBuffer(const void* data, unsigned int count)
@@ -145,6 +136,13 @@ IndexBuffer::IndexBuffer(const void* data, unsigned int count)
 	glGenBuffers(1, &m_RendererID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, count, data, GL_STATIC_DRAW);
+}
+
+IndexBuffer::IndexBuffer(const std::vector<unsigned int>& indices)
+{
+	glGenBuffers(1, &m_RendererID);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size()*sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
 }
 
 IndexBuffer::~IndexBuffer()
@@ -162,18 +160,7 @@ void IndexBuffer::UnBind() const
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-inline ::std::shared_ptr<IndexBuffer> IndexBuffer::Create(const void* data, unsigned int count) 
-{
-	return std::make_shared<IndexBuffer>(data, count); 
-}
-
-::std::shared_ptr<IndexBuffer> IndexBuffer::Create(const std::vector<unsigned int> indices)
-{
-	auto result = std::make_shared<IndexBuffer>(indices);
-	result->SetCount(indices.size());
-	return result;
-}
-
+unsigned int UniformBuffer::m_BindingPoint = 0;
 UniformBuffer::UniformBuffer(unsigned int size)
 {
 	glGenBuffers(1, &m_RendererID);

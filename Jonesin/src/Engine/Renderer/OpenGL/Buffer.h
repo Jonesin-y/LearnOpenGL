@@ -1,8 +1,7 @@
 #pragma once
-#define GL_FALSE 0
-#define GL_FLOAT 0x1406
-#define GL_INT 0x1404
+
 #include"Vertex.h"
+#include <Glad/glad.h>
 #include<vector>
 #include<string>
 enum class ShaderType
@@ -52,8 +51,6 @@ public:
 	void SetBufferLayout(BufferLayout& layout) { m_BufferLayout = layout; }
 	inline const BufferLayout& GetBufferLayout()const { return m_BufferLayout; }
 
-	static::std::shared_ptr<VertexBuffer> Create(const void* data, unsigned int count);
-	static::std::shared_ptr<VertexBuffer> Create(const std::vector<Vertex>& vertexs);
 private:
 	unsigned int m_RendererID;
 	BufferLayout m_BufferLayout;
@@ -69,8 +66,6 @@ public:
 	inline void SetCount(unsigned int count) { m_Count = count; }
 	inline unsigned int GetCount() { return m_Count; }
 
-	static::std::shared_ptr<IndexBuffer> Create(const void* data, unsigned int count);
-	static::std::shared_ptr<IndexBuffer> Create(const std::vector<unsigned int>indices);
 
 private:
 	unsigned int m_RendererID;
@@ -90,4 +85,3 @@ private:
 	unsigned int m_RendererID;
 
 };
-unsigned int UniformBuffer::m_BindingPoint = 0;
